@@ -12,7 +12,7 @@ My goal with this project was to recreate, as accurately as possible, a variety 
 
 I implemented the plugin as a C++ program, compiled for Linux. In its simplest form, the program can be run on its own from the command line, with a file name and a variety of parameters provided, and will play back the audio file distorted according to the parameters provided. The program implements two different modes of distortion, corresponding to two different audio codecs, SBC and OPUS. 
 
-The parameters supplied to the program(aside from a sample and a time selection for how much of it to play) include the format, a rate at which to drop packets(which can just be 0) and a bitrate quality selector. The selector for bitrates is designed on a scale from 0-10, with values chosen to provided roughly similar levels of quality for each format. 
+The parameters supplied to the program (aside from a sample and a time selection for how much of it to play) include the format, a rate at which to drop packets (which can just be 0) and a bitrate quality selector. The selector for bitrates is designed on a scale from 0-10, with values chosen to provided roughly similar levels of quality for each format. 
 
 |Selector Value | SBC Bitrate | OPUS Bitrate|
 |---------------|-------------|-------------|
@@ -40,7 +40,7 @@ The program implements the STK generator interface, allowing other programs to u
 
 ### Interfacing With Codecs
 
-The program uses the FFMPEG tool as a middleman between it and the implementations of the audio codecs themselves. FFMPEG provides us with a unified way to specify the parameters with which to encode the audio as well as a straightforward way to supply audio files to the codecs and extra single sample outputs. We make use of pipes, a standard Linux interprocess communication tool. The pipes allow us to, first of all, feed multiple FFMPEG calls through each other(for the purpose of encoding and then decoding to produce distortion), and then subsequently convert the floating point samples that FFMPEG outputs from raw binary to something easy to parse in C++ using od, a standard Unix tool. Finally we have a pipe within the program itself that reads the ultimate output from the chained system calls. 
+The program uses the FFMPEG tool as a middleman between it and the implementations of the audio codecs themselves. FFMPEG provides us with a unified way to specify the parameters with which to encode the audio as well as a straightforward way to supply audio files to the codecs and extra single sample outputs. We make use of pipes, a standard Linux interprocess communication tool. The pipes allow us to, first of all, feed multiple FFMPEG calls through each other (for the purpose of encoding and then decoding to produce distortion), and then subsequently convert the floating point samples that FFMPEG outputs from raw binary to something easy to parse in C++ using od, a standard Unix tool. Finally we have a pipe within the program itself that reads the ultimate output from the chained system calls. 
 
 ## Results
 
