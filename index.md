@@ -40,22 +40,24 @@ The program uses the FFMPEG tool as a middleman between it and the implementatio
 
 ## Results
 
-My program effectively recreates the distortion effects I attempted to replicate. I'll compare an example of its output to an actual example of my headphones distorting a signal. As well, I include some further examples of its effect on audio of various types, as well as an examination of its frequency response. 
+My program effectively recreates the distortion effects I attempted to replicate. I'll compare an example of its output to an actual example of my headphones distorting a signal. As well, I include some further examples of its effect on audio of various types.
 
 ### Comparison
-This is the sample as it plays through my headphones in normal conditions:
+[This is the raw sample I used:](/demo_raw.wav)
 
-This is the sample as it plays through my headphones, distanced from my computer and through a thick glass door:
+[This is the sample as it plays through my headphones in normal conditions:](/demo_distorted.wav)
 
-This is the sample after being fed through my program:
+[This is the sample as it plays through my headphones, distanced from my computer and through a thick glass door:](/demo_headphones.wav)
 
-### Analysis
+[This is the sample after being fed through my program:](/demo_recreated.wav)
 
 ### More Examples
 
-Here is an example of speech distorted with low bitrate OPUS and packet dropping:
+[Here is an example of speech distorted with low bitrate OPUS:](/speech_distorted.wav)
 
-Here is an example of heavily distorted music with the SBC protocol:
+[Here is an example of heavily distorted pop music with the SBC protocol:](/umbrella_distorted.wav)
+
+[Here is an example of classical music distorted with low bitrate and packet dropping:](/classical_distorted.wav)
 
 
 ## Issues And Solutions
@@ -65,3 +67,5 @@ The most challenging parts of this project were in the software engineering and 
 A further problem was that codecs are generally designed to sound good. This is of course in direct opposition to my objectives, and led to a lot of difficulty in finding effective parameters for achieving the kinds of distortion I was looking forward. 
 
 ### Potential Improvements
+
+### Alternative Approaches
