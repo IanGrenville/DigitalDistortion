@@ -32,7 +32,7 @@ With the parameters and audio source having been set, the program concatenativel
 
 A UML diagram of the interface of the generator is provided below:
 
-[!uml_diagram.png]
+![A UML Diagram of the digital_distortion class](uml_diagram.png)
 
 ### STK Interface
 
