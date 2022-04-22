@@ -30,6 +30,10 @@ The parameters supplied to the program(aside from a sample and a time selection 
 
 With the parameters and audio source having been set, the program concatenatively constructs a system call to FFMPEG and opens a pipe to it, such that the audio source provided will be filtered through the specified codecs and floating point samples output to the pipe. The program then can read a sample from the pipe each time a tick call comes through its STK interface, and provide it to whatever further use it will go to.
 
+A UML diagram of the interface of the generator is provided below:
+
+[!uml_diagram.png]
+
 ### STK Interface
 
 The program implements the STK generator interface, allowing other programs to use ```tick()``` on it like any other generator. Other aspects of the generator however must be set using the specific interface methods provided by the program, such as modifying the source or control parameters. 
@@ -68,4 +72,20 @@ A further problem was that codecs are generally designed to sound good. This is 
 
 ### Potential Improvements
 
+A number of improvements to this program are possible, including toward both functionality and ease of use. Some examples are:
+
+- A GUI interface like other STK generators
+- A MIDI interface for setting parameters
+- Replace FFMEPG calls with more powerful LibAvCodec/LibAvFilter interface
+- Stereo/Multiple channel support
+- Compiling for Windows and Mac
+- Compiling for use as a VST or other plugin type
+- Real time audio input as well as output
+
 ### Alternative Approaches
+
+There are other approaches to my objectives that would have also been viable. For example, I could have, instead of using the original codecs to reproduce the distortion effects, instead attempted to approximate them with standard audio effects. For example, with a precisely tweaked combination of low pass filters, bitcrushing and noise I almost certainly could have created an effect virtually indistinguishable from the actual one. 
+
+Alternatively, I could have attempted something like attempted to fully recreate the algorithms used within the codecs to a lower degree of precision, cutting out all the functionality except that which affects the audio in ways I want. This would have been quite a large undertaking and required indepth research to understand industrial strength encoding algorithms.
+
+One final possibility would have been leveraging the fact that to have the distortion effects in the first place, my computer must implement them, and so it would have been possible to have the computer produce the desired effects without additional special code, but it would have required the elaborate use of constructing and modifying virtual audio devices and passing signals between them.
